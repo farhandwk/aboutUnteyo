@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const MobileNav = ({ isOpen, setIsOpen }) => {
   // Gabungkan semua item navigasi di sini
   const navItems = [
-    { title: 'About Us', link: '/about' },
+    { title: 'About Us', link: '/newUnteyo/aboutUnteyo/' },
     { title: 'Program', link: '/program' },
     { title: 'All Events', link: '/events' },
     { title: 'News', link: '/news' },
