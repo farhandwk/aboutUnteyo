@@ -13,7 +13,7 @@ const MobileNav = ({ isOpen, setIsOpen }) => {
   ];
 
   const companyItems = [
-    { id: 1, title: "About Us", link: "#" },
+    { id: 1, title: "About Us", link: "/newUnteyo/aboutUnteyo/" },
     { id: 2, title: "Our Program", link: "#" },
     { id: 3, title: "Careers", link: "#" },
     { id: 4, title: "Contact Us", link: "#" },
