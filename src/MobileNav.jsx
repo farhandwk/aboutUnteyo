@@ -3,20 +3,12 @@
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MobileNav = ({ isOpen, setIsOpen }) => {
-  // Gabungkan semua item navigasi di sini
-  const navItems = [
-    { title: 'About Us', link: '/newUnteyo/aboutUnteyo/' },
-    { title: 'Program', link: '/program' },
-    { title: 'All Events', link: '/events' },
-    { title: 'News', link: '/news' },
-    // Tambahkan item lain jika ada
-  ];
 
   const companyItems = [
-    { id: 1, title: "About Us", link: "/newUnteyo/aboutUnteyo/" },
-    { id: 2, title: "Our Program", link: "#" },
+    { id: 1, title: "About Us", link: "/newUnteyo/about/" },
+    { id: 2, title: "Our Program", link: "/newUnteyo/program/" },
     { id: 3, title: "Careers", link: "#" },
-    { id: 4, title: "Contact Us", link: "#" },
+    { id: 4, title: "Contact Us", link: "/newUnteyo/contact" },
   ];
 
   const eventItems = [

@@ -9,10 +9,124 @@ import "./App.css"
 // Di lingkungan lokal Anda, Anda bisa menggunakan impor ini:
 import bgWhite from "./assets/DummbyBGwhite.jpg"
 import bgBlack from "./assets/DummyBGblack.png"
+import allTeam from "./assets/allTeam.png"
 
-// === KOMPONEN MODAL ===
-const Modal = ({ data, onClose }) => {
-    if (!data) return null;
+import adithio from "./assets/Team/Adit.png"
+import chrisnu from "./assets/Team/Chrisnu.png"
+import bagus from "./assets/Team/Bagus.png"
+import luthfi from "./assets/Team/Luthfi.png"
+import frederika from "./assets/Team/Frederika.png"
+import farhan from "./assets/Team/Farhan.png"
+
+const cLevel = [
+    {id: 1, img: adithio, name: "Adhitio Indra Kususma B S", title: "Chief Operating Officer"},
+    {id: 2, img: chrisnu, name: "Chrisnu Firmansyah", title: "Chief Creative Officer"}
+]
+
+const Lead = [
+    {id: 1, img: bagus, name: "Tubagus Pambudi", title: "Creative Lead"},
+    {id: 2, img: luthfi, name: "Luthfiah Dwi Fitriani", title: "Co-Creative Lead 1"},
+    {id: 3, img: frederika, name: "Frederika Angelina", title: "Co-Creative Lead 2"},
+    {id: 4, img: farhan, name: "Farhan Dwiki A", title: "Web Developer Lead"}
+]
+
+const whatWeDo = [
+    {id: 1, title: "Curating Insighful Content", text: "We consistently produce and share high-quality content, from in-depth articles to practical guides. Our topics are curated to cover the full student experience, addressing both academic and non-academic issues  while providing relevant knowledge and actionable resources for self-development."},
+    {id: 2, title: "Facilitating Enganging Events", text: "We consistently produce and share high-quality content, from in-depth articles to practical guides. Our topics are curated to cover the full student experience, addressing both academic and non-academic issues  while providing relevant knowledge and actionable resources for self-development."},
+    {id: 3, title: "Building an Empowerment Creative Platform", text: "Beyond content and events, we provide a dedicated creative media platform that functions as a creative outlet for students. It’s an ecosystem where our community can access resources, showcase their projects, and engage in a supportive environment focused on turning potential into tangible impact."},
+]
+
+const whyChoseeus = [
+    {id: 1, title: "Holistic & Purpose-Driven Development", text: "We look beyond academic scores to focus on your complete personal and professional growth. Our platform is intentionally designed to address the full spectrum of the student experience—both academic and non-academic—while instilling the critical thinking and design thinking skills essential for becoming a high-caliber professional in the modern world."},
+    {id: 2, title: "An Ecosystem for Creation & Impact", text: "We are more than a media platform; we are a thriving ecosystem for empowerment. We provide a dedicated creative outlet that encourages you to move beyond passive learning. Here, you can access resources, showcase your projects, and collaborate with peers in a supportive environment focused on turning your potential into real-world impact."},
+    {id: 3, title: "Actionable Content & Engaging Events", text: "We bridge the gap between theoretical knowledge and real-world application. We consistently produce high-quality content and facilitate interactive events, such as workshops and webinars, that are curated to be both inspiring and practical. These opportunities provide a dynamic space to connect with experts and apply your learning to tangible challenges"},
+]
+
+// === PERUBAHAN UTAMA ADA DI SINI ===
+// Komponen Modal sekarang menampilkan konten unik berdasarkan ID
+const Modal = ({ activeModalId, onClose }) => {
+    if (!activeModalId) return null;
+
+    // Fungsi untuk merender konten modal yang spesifik
+    const renderModalContent = () => {
+        switch (activeModalId) {
+            case 1:
+                return {
+                    title: "Who We Are",
+                    content: (
+                        <div className="space-y-4 text-white flex flex-col items-center gap-12 w-full">
+                            <section className='flex flex-col gap-2 text-md text-justify'>
+                                <img src={allTeam}></img>
+                                <p>
+                                    Part of the Hubung Group, it is a student empowerment media platform, providing information, resources, and creative outlets that encourage critical thinking, design thinking, and self-development.
+                                </p>
+                                <p>
+                                    Addresses academic and non-academic issues affecting students, with a focus on problem solving and creating real impact.
+                                </p>
+                            </section>
+                            <section className='flex flex-col items-center gap-2 text-justify'>
+                                <h4 className='font-bold text-3xl pb-2'>Story</h4>
+                                <p>Born from student-led concerns about personal and professional growth, Unteyo Journey was created to fill the gap in developing future-ready mindsets. We aim to transform students from passive content consumers into active creators and collaborators—contributing to a thriving ecosystem that supports Indonesia’s vision for 2045.</p>
+                            </section>
+                            <section className='flex flex-col items-center gap-6 w-full'>
+                                <h4 className='font-bold text-3xl'>Our Team</h4>
+                                <div className='flex flex-col md:flex-row w-full items-center justify-around gap-4 flex-wrap'>
+                                    {cLevel.map((item) => (
+                                        <div key={item.id} className='flex flex-col items-center md:w-1/3'>
+                                            <img src={item.img} className='w-2/3 rounded-full md:w-3/4'></img>
+                                            <span className='font-semibold text-lg'>{item.name}</span>
+                                            <span className='text-md'>{item.title}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className='w-full h-0.25 bg-gray-100'></div>
+                                <div className='flex flex-col md:flex-row w-full items-center justify-around gap-4 flex-wrap pb-12'>
+                                    {Lead.map((item) => (
+                                        <div key={item.id} className='flex flex-col items-center md:w-1/3'>
+                                            <img src={item.img} className='w-2/3 rounded-full md:w-3/4'></img>
+                                            <span className='font-semibold text-lg'>{item.name}</span>
+                                            <span className='text-md'>{item.title}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </div>
+                    )
+                };
+            case 2:
+                return {
+                    title: "What We Do",
+                    content: (
+                        <section className="space-y-4 text-white flex flex-col items-center gap-4 text-justify pb-12">
+                            {whatWeDo.map((item) => (
+                                <div key={item.id} className='flex flex-col items-center gap-2'>
+                                    <h4 className='font-semibold text-lg text-center'>{item.title}</h4>
+                                    <span className='text-md'>{item.text}</span>
+                                </div>
+                            ))}
+                        </section>
+                    )
+                };
+            case 3:
+                return {
+                    title: "Why Choose Us",
+                    content: (
+                        <section className="space-y-4 text-white flex flex-col items-center gap-4 text-justify pb-12">
+                            {whyChoseeus.map((item) => (
+                                <div key={item.id} className='flex flex-col items-center gap-2'>
+                                    <h4 className='font-semibold text-lg text-center'>{item.title}</h4>
+                                    <span className='text-md'>{item.text}</span>
+                                </div>
+                            ))}
+                        </section>
+                    )
+                };
+            default:
+                return { title: "", content: null };
+        }
+    };
+
+    const { title, content } = renderModalContent();
 
     return (
         <AnimatePresence>
@@ -20,20 +134,20 @@ const Modal = ({ data, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-6 pt-36"
                 onClick={onClose}
             >
                 <motion.div
                     initial={{ scale: 0.9, y: 20 }}
                     animate={{ scale: 1, y: 0 }}
                     exit={{ scale: 0.9, y: 20 }}
-                    className="bg-gray-900 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative"
+                    className="bg-gray-900 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative flex flex-col items-center md:max-w-4xl"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors text-2xl font-bold">&times;</button>
-                    <h2 className="text-3xl font-bold text-white mb-4">{data.title}</h2>
-                    <div className="text-gray-300 space-y-4">
-                        {data.content}
+                    <h2 className="text-3xl font-bold text-white mb-8">{title}</h2>
+                    <div className="text-gray-300">
+                        {content}
                     </div>
                 </motion.div>
             </motion.div>
@@ -42,7 +156,6 @@ const Modal = ({ data, onClose }) => {
 };
 
 
-// PERBAIKAN: Struktur GridBox diubah untuk mendukung transisi filter blur
 const GridBox = ({ children, className, onClick, onMouseEnter, onMouseLeave, imageUrl, isExpanded }) => (
     <div 
         className={`flex items-center justify-center rounded-2xl transition-all duration-700 ease-in-out cursor-pointer overflow-hidden relative ${className}`}
@@ -50,12 +163,10 @@ const GridBox = ({ children, className, onClick, onMouseEnter, onMouseLeave, ima
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
     >
-        {/* Lapisan Latar Belakang: Di sinilah gambar dan efek blur diterapkan */}
         <div
             className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out ${isExpanded ? 'scale-110 blur-sm' : 'scale-100 blur-0'}`}
             style={{ backgroundImage: `url(${imageUrl})` }}
         />
-        {/* Lapisan Konten: Berada di atas latar belakang */}
         <div className="relative z-10 w-full h-full">
             {children}
         </div>
@@ -66,7 +177,6 @@ const DefaultContent = ({ title }) => (
     <div 
         className="relative flex items-center justify-center w-full h-full text-white text-center"
     >
-        {/* Overlay ini akan berada di atas background image dari GridBox */}
         <div className="absolute inset-0 bg-black/50"></div>
         <h3 className="relative z-10 text-xl font-bold p-4 lg:text-2xl">{title}</h3>
     </div>
@@ -105,11 +215,11 @@ function InteractiveGridLayout({ onOpenModal }) {
         return `${mobileHeight} ${desktopWidth} md:h-128`;
     };
     
-    // Di komputer Anda, ganti URL ini dengan variabel impor Anda (misal: bgWhite).
+    // PERUBAHAN: Kunci 'content' dihapus dari data
     const boxesData = [
-        { id: 1, imageUrl: bgWhite, title: "Who We Are", description: "See our journey and milestones.", content: <><p>Ini adalah bagian detail tentang 'Who We Are'. Anda bisa menaruh banyak paragraf di sini.</p><p>Konten ini akan bisa di-scroll jika lebih panjang dari tinggi modal.</p></> },
-        { id: 2, imageUrl: bgBlack, title: "How We Do It", description: "Our methods and innovations.", content: <><p>Ini adalah penjelasan mendalam tentang 'How We Do It'.</p><p>Jelaskan proses, teknologi, dan metodologi yang Anda gunakan.</p></> },
-        { id: 3, imageUrl: bgWhite, title: "What We Do", description: "Explore our products and services.", content: <><p>Ini adalah deskripsi lengkap tentang 'What We Do'.</p><p>Anda bisa menambahkan daftar layanan, studi kasus, atau galeri produk di sini.</p></> }
+        { id: 1, imageUrl: bgWhite, title: "Who We Are", description: "See our journey and meet our teams." },
+        { id: 2, imageUrl: bgBlack, title: "What We Do", description: "Check our enganging activites." },
+        { id: 3, imageUrl: bgWhite, title: "Why Choose Us", description: "Reason you here." }
     ];
 
     const isHintVisible = hoveredBox === 0 && activeBox === 0;
@@ -133,7 +243,6 @@ function InteractiveGridLayout({ onOpenModal }) {
 
             <div className="w-full flex flex-col md:flex-row gap-4">
                 {boxesData.map(box => {
-                    // Tentukan apakah kotak ini sedang dalam keadaan diperluas
                     const isExpanded = hoveredBox === box.id || activeBox === box.id;
                     return (
                         <GridBox 
@@ -143,7 +252,7 @@ function InteractiveGridLayout({ onOpenModal }) {
                             onMouseLeave={() => handleDesktopHover(0)}
                             className={getBoxClasses(box.id)}
                             imageUrl={box.imageUrl}
-                            isExpanded={isExpanded} // Kirim state ini ke GridBox
+                            isExpanded={isExpanded}
                         >
                             <div className={`absolute inset-0 transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}>
                                 <DefaultContent title={box.title} />
@@ -152,7 +261,8 @@ function InteractiveGridLayout({ onOpenModal }) {
                                 <ExpandedContent 
                                     title={box.title} 
                                     description={box.description} 
-                                    onLearnMore={() => onOpenModal(box)}
+                                    // PERUBAHAN: Sekarang hanya mengirim ID
+                                    onLearnMore={() => onOpenModal(box.id)}
                                 />
                             </div>
                         </GridBox>
@@ -180,7 +290,8 @@ function InteractiveGridLayout({ onOpenModal }) {
 
 // Komponen App utama
 export default function App() {
-    const [modalData, setModalData] = useState(null);
+    // PERUBAHAN: State sekarang menyimpan ID, bukan seluruh objek
+    const [activeModalId, setActiveModalId] = useState(null);
 
     return (
         <div className="min-h-screen w-full bg-black flex flex-col items-center justify-center font-[helvetica]">
@@ -188,9 +299,9 @@ export default function App() {
             <div className="text-center mb-4 text-white pt-36 md:mb-8">
                 <h1 className="text-2xl font-bold lg:text-4xl">About Unteyo</h1>
             </div>
-            <InteractiveGridLayout onOpenModal={setModalData} />
+            <InteractiveGridLayout onOpenModal={setActiveModalId} />
             <Footer/>
-            <Modal data={modalData} onClose={() => setModalData(null)} />
+            <Modal activeModalId={activeModalId} onClose={() => setActiveModalId(null)} />
         </div>
     );
 }
