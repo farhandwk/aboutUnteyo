@@ -7,6 +7,9 @@ import Footer from "./Footer"
 import "./App.css"
 
 // Di lingkungan lokal Anda, Anda bisa menggunakan impor ini:
+import bg1 from "./assets/bg1.jpg"
+import bg2 from "./assets/bg2.jpg"
+import bg3 from "./assets/bg3.jpg"
 import bgWhite from "./assets/DummbyBGwhite.jpg"
 import bgBlack from "./assets/DummyBGblack.png"
 import allTeam from "./assets/allTeam.png"
@@ -145,9 +148,17 @@ const Modal = ({ activeModalId, onClose }) => {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors text-2xl font-bold">&times;</button>
-                    <h2 className="text-3xl font-bold text-white mb-8">{title}</h2>
+                    <h2 className="text-3xl font-bold text-white ">{title}</h2>
                     <div className="text-gray-300">
                         {content}
+                    </div>
+                    <div className="flex mb-8 justify-center">
+                        <button 
+                            onClick={onClose}
+                            className="bg-white/10 border border-white/20 text-white font-semibold px-6 py-2 rounded-full hover:bg-white/20 transition-colors duration-300"
+                        >
+                            Close
+                        </button>
                     </div>
                 </motion.div>
             </motion.div>
@@ -165,8 +176,9 @@ const GridBox = ({ children, className, onClick, onMouseEnter, onMouseLeave, ima
     >
         <div
             className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out ${isExpanded ? 'scale-110 blur-sm' : 'scale-100 blur-0'}`}
-            style={{ backgroundImage: `url(${imageUrl})` }}
+            style={{ backgroundImage: `url(${imageUrl})`}}
         />
+         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 w-full h-full">
             {children}
         </div>
@@ -204,7 +216,7 @@ function InteractiveGridLayout({ onOpenModal }) {
     };
 
     const handleDesktopHover = (boxNumber) => {
-        if (window.innerWidth >= 768) {
+        if (window.innerWidth >= 1024) {
             setHoveredBox(boxNumber);
         }
     };
@@ -217,9 +229,9 @@ function InteractiveGridLayout({ onOpenModal }) {
     
     // PERUBAHAN: Kunci 'content' dihapus dari data
     const boxesData = [
-        { id: 1, imageUrl: bgWhite, title: "Who We Are", description: "See our journey and meet our teams." },
-        { id: 2, imageUrl: bgBlack, title: "What We Do", description: "Check our enganging activites." },
-        { id: 3, imageUrl: bgWhite, title: "Why Choose Us", description: "Reason you here." }
+        { id: 1, imageUrl: bg1, title: "Who We Are", description: "See our journey and meet our teams." },
+        { id: 2, imageUrl: bg2, title: "What We Do", description: "Check our enganging activites." },
+        { id: 3, imageUrl: bg3, title: "Why Choose Us", description: "Reason you here." }
     ];
 
     const isHintVisible = hoveredBox === 0 && activeBox === 0;
