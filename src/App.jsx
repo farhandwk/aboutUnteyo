@@ -7,11 +7,9 @@ import Footer from "./Footer"
 import "./App.css"
 
 // Di lingkungan lokal Anda, Anda bisa menggunakan impor ini:
-import bg1 from "./assets/bg1.jpg"
-import bg2 from "./assets/bg2.jpg"
-import bg3 from "./assets/bg3.jpg"
-import bgWhite from "./assets/DummbyBGwhite.jpg"
-import bgBlack from "./assets/DummyBGblack.png"
+import bg1 from "./assets/bg1.png"
+import bg2 from "./assets/bg2.png"
+import bg3 from "./assets/bg3.png"
 import allTeam from "./assets/allTeam.png"
 
 import adithio from "./assets/Team/Adit.png"
@@ -175,7 +173,7 @@ const GridBox = ({ children, className, onClick, onMouseEnter, onMouseLeave, ima
         onMouseLeave={onMouseLeave}
     >
         <div
-            className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out ${isExpanded ? 'scale-110 blur-sm' : 'scale-100 blur-0'}`}
+            className={`absolute inset-0 bg-cover transition-all duration-700 ease-in-out ${isExpanded ? 'bg-start scale-110 blur-sm' : 'bg-center scale-100 blur-0'}`}
             style={{ backgroundImage: `url(${imageUrl})`}}
         />
          <div className="absolute inset-0 bg-black/40"></div>
@@ -253,7 +251,7 @@ function InteractiveGridLayout({ onOpenModal }) {
                 </AnimatePresence>
             </div>
 
-            <div className="w-full flex flex-col md:flex-row gap-4">
+            <div className="w-full flex flex-col md:flex-row gap-6">
                 {boxesData.map(box => {
                     const isExpanded = hoveredBox === box.id || activeBox === box.id;
                     return (
@@ -273,7 +271,6 @@ function InteractiveGridLayout({ onOpenModal }) {
                                 <ExpandedContent 
                                     title={box.title} 
                                     description={box.description} 
-                                    // PERUBAHAN: Sekarang hanya mengirim ID
                                     onLearnMore={() => onOpenModal(box.id)}
                                 />
                             </div>
