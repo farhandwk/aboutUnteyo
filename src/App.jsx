@@ -135,18 +135,18 @@ const Modal = ({ activeModalId, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-6 pt-36"
+                className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-6 pt-36"
                 onClick={onClose}
             >
                 <motion.div
                     initial={{ scale: 0.9, y: 20 }}
                     animate={{ scale: 1, y: 0 }}
                     exit={{ scale: 0.9, y: 20 }}
-                    className="bg-gray-900 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative flex flex-col items-center md:max-w-4xl"
+                    className="bg-black/90 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative flex flex-col items-center md:max-w-4xl"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors text-2xl font-bold">&times;</button>
-                    <h2 className="text-3xl font-bold text-white ">{title}</h2>
+                    <h2 className="text-3xl font-bold text-white mb-8">{title}</h2>
                     <div className="text-gray-300">
                         {content}
                     </div>
@@ -176,7 +176,7 @@ const GridBox = ({ children, className, onClick, onMouseEnter, onMouseLeave, ima
             className={`absolute inset-0 bg-cover transition-all duration-700 ease-in-out ${isExpanded ? 'bg-start scale-110 blur-sm' : 'bg-center scale-100 blur-0'}`}
             style={{ backgroundImage: `url(${imageUrl})`}}
         />
-         <div className="absolute inset-0 bg-black/40"></div>
+         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 w-full h-full">
             {children}
         </div>
@@ -187,7 +187,6 @@ const DefaultContent = ({ title }) => (
     <div 
         className="relative flex items-center justify-center w-full h-full text-white text-center"
     >
-        <div className="absolute inset-0 bg-black/50"></div>
         <h3 className="relative z-10 text-xl font-bold p-4 lg:text-2xl">{title}</h3>
     </div>
 );
@@ -264,7 +263,7 @@ function InteractiveGridLayout({ onOpenModal }) {
                             imageUrl={box.imageUrl}
                             isExpanded={isExpanded}
                         >
-                            <div className={`absolute inset-0 transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}>
+                            <div className={`absolute inset-0 transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}>z
                                 <DefaultContent title={box.title} />
                             </div>
                             <div className={`absolute inset-0 transition-opacity duration-500 ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>
