@@ -73,7 +73,7 @@ export default function Header() {
             <img src={hamburger} ></img>
           </button>
           <div className="flex flex-row items-center justify-center">
-            <a href="/newUnteyo/">
+            <a href="/">
               <img src={logo} className="w-[74px] h-[80px] " alt="Logo"/>
             </a>
           
